@@ -6,15 +6,14 @@ for (i in 1:num_weeks) {
   positions[i] <- current
   
   # flip coin to generate proposal
-  proposal <- current + sample(c(-1,1) size=1)
+  proposal <- current + sample(c(-1,1), size=1)
   # now make sure he loops around the archipelago
   if (proposal < 1) proposal <- 10
   if (proposal > 10) proposal <- 1
   
   # move?
   prob_move <- proposal/current
-  current <- ifelse(runif(1) < prob_move, proposal, current
+  current <- ifelse(runif(1) < prob_move, proposal, current)
 }
 
-for (i in 1:100) print(positions[i])
-
+hist(positions)
